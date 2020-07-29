@@ -1,4 +1,5 @@
-From tomcat:8.0.51-jre8-alpine
-RUN rm -rf /usr/local/tomcat/webapps/*
-COPY ./target/mvn-hello-world.war /usr/local/tomcat/webapps/ROOT.war
-CMD ["catalina.sh","run"]
+FROM alpine:3.12.0
+WORKDIR /tmp
+RUN wget --quiet https://github.com/vmware-tanzu/velero/releases/download/v1.4.2/velero-v1.4.2-linux-amd64.tar.gz && \
+    tar zxf velero-v1.4.2-linux-amd64.tar.gz && \
+    mv velero-v1.4.2-linux-amd64/velero /usr/local/bin/
